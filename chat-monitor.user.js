@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name           Nifty Chat Monitor
-// @namespace      http://somewhatnifty.com
-// @description    reformats twitch chat for display on a chat monitor
+// @name           Nifty Chat Monitor, Road-hog123 Customised
+// @namespace      https://roadhog123.co.uk
+// @description    adds inline images to Twitch chat
 // @match        https://www.twitch.tv/popout/*/chat?display*
-// @version    0.302
-// @updateURL https://raw.githubusercontent.com/paul-lrr/nifty-chat-monitor/master/chat-monitor.user.js
-// @downloadURL https://raw.githubusercontent.com/paul-lrr/nifty-chat-monitor/master/chat-monitor.user.js
+// @version    0.302-RH0
+// @updateURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
+// @downloadURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant       GM_getResourceText
@@ -14,7 +14,7 @@
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @grant       GM_log
-// @resource style https://raw.githubusercontent.com/paul-lrr/nifty-chat-monitor/master/chat-monitor.css
+// @resource style https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.css
 // @resource material-icons https://fonts.googleapis.com/icon?family=Material+Icons
 // ==/UserScript==
 
