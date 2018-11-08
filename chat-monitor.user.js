@@ -3,7 +3,7 @@
 // @namespace      https://roadhog123.co.uk
 // @description    adds inline images to Twitch chat
 // @match        https://www.twitch.tv/popout/*/chat?display*
-// @version    0.302-RH0
+// @version    0.302-RH1
 // @updateURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @downloadURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
