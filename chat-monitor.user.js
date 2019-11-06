@@ -16,8 +16,6 @@
 // @resource style https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.css
 // ==/UserScript==
 
-var inlineImages = false;
-
 var MESSAGE_CONTAINER = ".chat-list .tw-full-height";
 waitForKeyElements(MESSAGE_CONTAINER, onChatLoad);
 var twitterScript = document.createElement("script");
@@ -26,16 +24,6 @@ twitterScript.src = "https://platform.twitter.com/widgets.js";
 document.body.appendChild(twitterScript);
 
 function onChatLoad() {
-  loadSettings();
-  actionFunction();
-}
-
-//Checks all config options and loads them appropriately
-function loadSettings() {
-  inlineImages = true;
-}
-
-function actionFunction() {
   // The node to be monitored
   var target = document.querySelector(MESSAGE_CONTAINER);
 
@@ -56,8 +44,8 @@ function actionFunction() {
             }
 
             //add inline images
-            if (inlineImages) {
-              newNode.querySelectorAll(".chat-line__message > a").forEach(function(link) {
+            newNode.querySelectorAll(".chat-line__message > a")
+              .forEach(function(link) {
                 var re = /(.*(?:jpg|png|gif|jpeg))$/gm;
                 if (re.test(link.textContent)) {
                   link.innerHTML =
