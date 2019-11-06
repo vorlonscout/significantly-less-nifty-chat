@@ -3,7 +3,7 @@
 // @namespace      https://roadhog123.co.uk
 // @description    inlines Images, GIPHY GIFs, YouTube Thumbnails and Tweets in Twitch chat
 // @match        https://www.twitch.tv/*
-// @version    0.307-RH4
+// @version    0.307-RH5
 // @updateURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @downloadURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
@@ -102,6 +102,9 @@ function linkImage(node, imageURL) {
   var image = document.createElement("img")
   node.appendChild(image);
   image.style.display = "none";
+  image.style.maxWidth = "100%";
+  image.style.maxHeight = "50vh";
+  image.style.margin = "0.25em 0";
   image.src = imageURL
   image.addEventListener("load", function(){ image.style.display = "inline"; })
 }
