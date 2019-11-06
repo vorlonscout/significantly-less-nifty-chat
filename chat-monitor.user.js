@@ -55,27 +55,6 @@ function actionFunction() {
               return;
             }
 
-            //add data-user=<username> for user-based highlighting
-            newNode.dataset.user = newNode.querySelector(".chat-author__display-name").textContent;
-
-            //add data-badges=<badges> for badge-based highlighting
-            var badges = [];
-            newNode.querySelectorAll("img.chat-badge").forEach(function(badge) {
-              badges.push(badge.alt);
-            });
-            newNode.dataset.badges = badges.join(",");
-
-            //add data-message=<message> for keyword-based highlighting
-            var message = newNode.querySelector("span[data-a-target='chat-message-text']");
-            if (message) {
-              newNode.dataset.message = message.textContent
-                .replace(/(\r|\s{2,})/gm, " ")
-                .trim()
-                .toLowerCase();
-            } else if (newNode.querySelector(".chat-image")) {
-              newNode.dataset.message = "Emote: " + newNode.querySelector(".chat-image").alt;
-            }
-
             //add inline images
             if (inlineImages) {
               newNode.querySelectorAll(".chat-line__message > a").forEach(function(link) {
@@ -107,11 +86,6 @@ function actionFunction() {
                     .catch(e => console.log(e));
                 }
               });
-            }
-
-            if (!newNode.previousElementSibling.classList.contains("odd")) {
-              newNode.classList.add("odd");
-            }
 
             newNode.querySelectorAll("img").forEach(img => {
               if (img.src.indexOf("jtvnw.net") === -1) {
