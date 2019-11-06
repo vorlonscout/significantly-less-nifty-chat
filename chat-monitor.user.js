@@ -16,23 +16,6 @@
 // @resource style https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.css
 // ==/UserScript==
 
-// Redirect to new layout if we find the old layout
-if (document.querySelector(".ember-application")) {
-  window.location = window.location.href.replace("twitch.tv", "twitch.tv/popout");
-}
-
-let getQS = str => {
-  let a,
-    q = {},
-    r = /([^?=&\r\n]+)(?:=([^&\r\n]*))?/g;
-  while ((a = r.exec(str)) !== null) {
-    q[a[1]] = a[2] || "";
-  }
-  return q;
-};
-
-var qs = getQS(location.search);
-
 var inlineImages = false;
 
 var scrollDistance = 0,
