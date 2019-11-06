@@ -1,4 +1,4 @@
-img {
+.chat-line__message a img {
   max-width: 100%;
   max-height: 50vh;
   margin: 0.25em 0;
