@@ -1,9 +1,14 @@
 # Significantly Less Nifty Chat: An Edit of Nifty Chat Monitor
 
-Userscript for Grease/Tampermonkey to inline images in Twitch chat. It does nothing else.
+Userscript for Grease/Tampermonkey to inline Images, GIPHY GIFs, YouTube Thumbnails and Tweets in Twitch chat. It does nothing else.
+
+This script was derived from the Paul Saunders' [Nifty Chat Monitor](https://github.com/paul-lrr/nifty-chat-monitor) script, created by Paul and with contributions from LoadingReadyRun viewers.
 
 ### Features
 - inlines linked images
+- inlines GIPHY GIFs
+- inlines thumbnail images for YouTube video links
+- inlines tweets
 
 ## Installation
 - Install the [Tampermonkey](https://tampermonkey.net/) or [Greasemonkey](https://addons.mozilla.org/addon/greasemonkey/) (Firefox Only) extension for your browser
@@ -11,5 +16,5 @@ Userscript for Grease/Tampermonkey to inline images in Twitch chat. It does noth
 - If it doesn't, you can copy the contents of the Raw JS file into a new Tampermonkey userscript
 
 ## Usage
-Unlike the Nifty Chat Monitor script, this userscript works without any url changes.
-Note that a link must be to an image (end in an image file extension) and not involve ports.
+- Unlike the Nifty Chat Monitor script, this userscript works on any Twitch channel watch page.
+- When posting a link in chat, note that it won't be inlined if it doesn't end in an image extension, or if the url involves ports.
