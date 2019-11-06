@@ -36,17 +36,6 @@ function loadSettings() {
 }
 
 function actionFunction() {
-  //add keyboard command and element to hide chat
-  $("body").keydown(e => {
-    if ((e.key == "H" || e.key == "h") && e.shiftKey && e.ctrlKey) {
-      e.preventDefault();
-      $("#hide").toggle();
-    }
-  });
-  $('<div id="hide" />')
-    .html("Chat Hidden<br/><br/><br/>Ctrl-Shift-H to Show")
-    .hide()
-    .appendTo("body");
   // The node to be monitored
   var target = document.querySelector(MESSAGE_CONTAINER);
 
