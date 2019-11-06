@@ -55,6 +55,11 @@ function onChatLoad() {
               linkImage(link.parentNode, link.href.replace("media.giphy.com", "media1.giphy.com"));
               return;
             }
+            giphyID = getGiphyID(link.href)
+            if (giphyID) {
+              linkImage(link.parentNode, "https://media1.giphy.com/media/" + giphyID + "/giphy.gif");
+              return;
+            }
             videoID = getYouTubeVideoID(link.href)
             if (videoID) {
               linkImage(link.parentNode, "https://img.youtube.com/vi/" + videoID + "/mqdefault.jpg");
@@ -78,13 +83,18 @@ function isImageLink(url) {
   return /(.*(?:jpg|png|gif|jpeg))$/gm.test(url);
 }
 
+function getGiphyID(url) {
+  let match = /^https?:\/\/giphy\.com\/gifs\/(.*-)?([a-zA-Z0-9]+)$/gm.exec(url);
+  return ((match) ? match[2] : "")
+}
+
 function getYouTubeVideoID(url) {
-  match = /^https?:\/\/(www\.)?(youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(url);
+  let match = /^https?:\/\/(www\.)?(youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(url);
   return ((match) ? match[3] : "");
 }
 
 function getTweetID(url) {
-  match = /^https?:\/\/(www\.)?twitter\.com.+\/([0-9]+)$/gm.exec(url);
+  let match = /^https?:\/\/(www\.)?twitter\.com.+\/([0-9]+)$/gm.exec(url);
   return ((match) ? match[2] : "");
 }
 
