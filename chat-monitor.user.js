@@ -1,19 +1,14 @@
 // ==UserScript==
 // @name           Nifty Chat Monitor, Road-hog123 Customised
-// @namespace      https://roadhog123.co.uk
+// @namespace      https://roadhog123.co.uk/
 // @description    inlines Images, GIPHY GIFs, YouTube Thumbnails and Tweets in Twitch chat
-// @match        https://www.twitch.tv/*
-// @version    0.307-RH5
-// @updateURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
-// @downloadURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
-// @require  https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
-// @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
-// @grant       GM_getResourceText
-// @grant       GM_addStyle
-// @grant       GM_getValue
-// @grant       GM_setValue
-// @grant       GM_log
-// @resource style https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.css
+// @match          https://www.twitch.tv/*
+// @version        0.307-RH6
+// @updateURL      https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
+// @downloadURL    https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
+// @require        https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
+// @require        https://gist.github.com/raw/2625891/waitForKeyElements.js
+// @grant          GM_log
 // ==/UserScript==
 
 var MESSAGE_CONTAINER = ".chat-list .tw-full-height";
@@ -118,6 +113,3 @@ function linkTwitter(node, tweetURL) {
     .then(function(){ tweet.style.display = "block"; })
     .catch(e => console.log(e));
 }
-
-//inject custom stylessheet
-GM_addStyle(GM_getResourceText("style"));
