@@ -30,64 +30,43 @@ function onChatLoad() {
   // Create an observer instance
   var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-      var newNodes = mutation.addedNodes; // DOM NodeList
-      if (newNodes !== null) {
-        // If there are new nodes added
-        newNodes.forEach(function(newNode) {
-          if (newNode.nodeType == Node.ELEMENT_NODE) {
-            // Add the newly added node's height to the scroll distance and reset the reference distance
-            newNode.dataset.height = newNode.scrollHeight;
+      // Get list of new nodes
+      var newNodes = mutation.addedNodes;
 
-            if (!newNode.classList.contains("chat-line__message")) {
-              // Only treat chat messages
+      // Check if there are new nodes added
+      if (newNodes == null) {
+        return;
+      }
+
+      newNodes.forEach(function(newNode) {
+        if (newNode.nodeType !== Node.ELEMENT_NODE) {
+          return;
+        }
+
+        // Only treat chat messages
+        if (!newNode.classList.contains("chat-line__message")) {
+          return;
+        }
+
+        //add inline images
+        newNode.querySelectorAll(".chat-line__message > a")
+          .forEach(function(link) {
+            if (isImageLink(link.href)) {
+              linkImage(link.parentNode, link.href.replace("media.giphy.com", "media1.giphy.com"));
               return;
             }
-
-            //add inline images
-            newNode.querySelectorAll(".chat-line__message > a")
-              .forEach(function(link) {
-                var re = /(.*(?:jpg|png|gif|jpeg))$/gm;
-                if (re.test(link.textContent)) {
-                  link.innerHTML =
-                    '<img src="' + link.textContent.replace("media.giphy.com", "media1.giphy.com") + '" alt="' + link.textContent + '"/>';
-                }
-                var match = /^https?:\/\/giphy\.com\/gifs\/(.*-)?([a-zA-Z0-9]+)$/gm.exec(link.textContent);
-                if (match) {
-                  var imageUrl = "https://media1.giphy.com/media/" + match[2].split("-").pop() + "/giphy.gif";
-                  link.innerHTML = '<img src="' + imageUrl + '" alt="' + link.textContent + '"/>';
-                }
-                match = /^https?:\/\/(www\.)?(youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(link.textContent);
-                if (match) {
-                  var imageUrl = "https://img.youtube.com/vi/" + match[3] + "/mqdefault.jpg";
-                  link.innerHTML = link.textContent + '<br/><img src="' + imageUrl + '" alt="' + link.textContent + '"/>';
-                }
-                match = /^https?:\/\/(www\.)?twitter\.com.+\/([0-9]+)$/gm.exec(link.textContent);
-                if (match) {
-                  var tweetContainer = document.createElement("div");
-                  link.parentNode.appendChild(tweetContainer);
-                  tweetContainer.style.display = "none";
-                  twttr.widgets
-                    .createTweet(match[2], tweetContainer, {theme: "dark", conversation: "hidden", cards: "hidden"})
-                    .then(el => {
-                      tweetContainer.style.display = "block";
-                    })
-                    .catch(e => console.log(e));
-                }
-              });
-
-            newNode.querySelectorAll("img").forEach(img => {
-              if (img.src.indexOf("jtvnw.net") === -1) {
-                // don't do this for emoticons
-                img.style.display = "none";
-                img.addEventListener("load", e => {
-                  img.style.display = "inline";
-                  newNode.dataset.height = newNode.scrollHeight;
-                });
-              }
-            });
-          }
-        });
-      }
+            videoID = getYouTubeVideoID(link.href)
+            if (videoID) {
+              linkImage(link.parentNode, "https://img.youtube.com/vi/" + videoID + "/mqdefault.jpg");
+              return;
+            }
+            twitterID = getTweetID(link.href)
+            if (twitterID) {
+              linkTwitter(link, twitterID);
+              return;
+            }
+          });
+      });
     });
   });
 
@@ -95,6 +74,37 @@ function onChatLoad() {
   observer.observe(target, {childList: true});
 }
 
+function isImageLink(url) {
+  return /(.*(?:jpg|png|gif|jpeg))$/gm.test(url);
+}
+
+function getYouTubeVideoID(url) {
+  match = /^https?:\/\/(www\.)?(youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(url);
+  return ((match) ? match[3] : "");
+}
+
+function getTweetID(url) {
+  match = /^https?:\/\/(www\.)?twitter\.com.+\/([0-9]+)$/gm.exec(url);
+  return ((match) ? match[2] : "");
+}
+
+function linkImage(node, imageURL) {
+  var image = document.createElement("img")
+  node.appendChild(image);
+  image.style.display = "none";
+  image.src = imageURL
+  image.addEventListener("load", function(){ image.style.display = "inline"; })
+}
+
+function linkTwitter(node, tweetURL) {
+  var tweet = document.createElement("div")
+  node.appendChild(tweet);
+  tweet.style.display = "none";
+  twttr.widgets
+    .createTweet(tweetURL, tweet, {theme: "dark", conversation: "hidden", cards: "hidden"})
+    .then(function(){ tweet.style.display = "block"; })
+    .catch(e => console.log(e));
+}
+
 //inject custom stylessheet
-var style = GM_getResourceText("style");
-GM_addStyle(style);
+GM_addStyle(GM_getResourceText("style"));
