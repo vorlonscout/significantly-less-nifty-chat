@@ -3,7 +3,7 @@
 // @namespace      https://roadhog123.co.uk
 // @description    inlines Images, GIPHY GIFs, YouTube Thumbnails and Tweets in Twitch chat
 // @match        https://www.twitch.tv/*
-// @version    0.307-RH1
+// @version    0.307-RH2
 // @updateURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @downloadURL https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
@@ -117,4 +117,5 @@ function linkTwitter(node, tweetURL) {
 }
 
 //inject custom stylessheet
-GM_addStyle(GM_getResourceText("style"));
+var style = GM_getResourceText("style");
+GM_addStyle(style);
