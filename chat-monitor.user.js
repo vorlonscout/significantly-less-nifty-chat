@@ -18,9 +18,6 @@
 
 var inlineImages = false;
 
-var scrollDistance = 0,
-  scrollReference = +new Date();
-
 var MESSAGE_CONTAINER = ".chat-list .tw-full-height";
 waitForKeyElements(MESSAGE_CONTAINER, onChatLoad);
 var twitterScript = document.createElement("script");
@@ -53,8 +50,6 @@ function actionFunction() {
   // The node to be monitored
   var target = document.querySelector(MESSAGE_CONTAINER);
 
-  // The div containing the scrollable area
-  var chatContentDiv = target.parentNode.parentNode;
   // Create an observer instance
   var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -65,7 +60,6 @@ function actionFunction() {
           if (newNode.nodeType == Node.ELEMENT_NODE) {
             // Add the newly added node's height to the scroll distance and reset the reference distance
             newNode.dataset.height = newNode.scrollHeight;
-            scrollReference = scrollDistance += newNode.scrollHeight;
 
             if (!newNode.classList.contains("chat-line__message")) {
               // Only treat chat messages
@@ -120,7 +114,6 @@ function actionFunction() {
                     .createTweet(match[2], tweetContainer, {theme: "dark", conversation: "hidden", cards: "hidden"})
                     .then(el => {
                       tweetContainer.style.display = "block";
-                      scrollReference = scrollDistance += el.scrollHeight;
                     })
                     .catch(e => console.log(e));
                 }
@@ -137,7 +130,6 @@ function actionFunction() {
                 img.style.display = "none";
                 img.addEventListener("load", e => {
                   img.style.display = "inline";
-                  scrollReference = scrollDistance += Math.max(0, img.scrollHeight - newNode.dataset.height);
                   newNode.dataset.height = newNode.scrollHeight;
                 });
               }
@@ -150,35 +142,6 @@ function actionFunction() {
 
   // Pass in the target node, as well as the observer options
   observer.observe(target, {childList: true});
-
-  // Continually scroll up, in a way to make the comments readable
-  var lastFrame = +new Date();
-  function scrollUp(now) {
-    if (GM_config.get("ReverseDirection")) {
-      if (scrollDistance > 0 && GM_config.get("SmoothScroll")) {
-        // estimate how far along we are in scrolling in the current scroll reference
-        var currentStep = (parseFloat(GM_config.get("SmoothScrollSpeed")) * 1000) / (now - lastFrame);
-        scrollDistance -= scrollReference / currentStep;
-        scrollDistance = Math.max(Math.floor(scrollDistance), 0);
-        chatContentDiv.scrollTop = scrollDistance;
-      } else {
-        chatContentDiv.scrollTop = 0;
-      }
-    }
-    lastFrame = now;
-    window.requestAnimationFrame(scrollUp);
-  }
-  window.requestAnimationFrame(scrollUp);
-  chatContentDiv.scrollTop = 0;
-
-  // Disable Twitch autoscroll with a little trick for performance reasons
-  if (GM_config.get("ReverseDirection")) {
-    setTimeout(function() {
-      chatContentDiv.scrollBy(0, -200);
-      chatContentDiv.dispatchEvent(new WheelEvent("wheel", {deltaY: -200}));
-      chatContentDiv.scrollBy(0, 200);
-    }, 5000);
-  }
 }
 
 //inject custom stylessheet
