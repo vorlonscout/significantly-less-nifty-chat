@@ -3,7 +3,7 @@
 // @namespace      https://roadhog123.co.uk/
 // @description    inlines Images, GIPHY GIFs, YouTube Thumbnails and Tweets in Twitch chat
 // @match          https://www.twitch.tv/*
-// @version        0.307-RH7
+// @version        0.307-RH8
 // @updateURL      https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @downloadURL    https://raw.githubusercontent.com/road-hog123/significantly-less-nifty-chat/master/chat-monitor.user.js
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
@@ -46,21 +46,22 @@ function onChatLoad() {
         //add inline images
         newNode.querySelectorAll(".chat-line__message > a")
           .forEach(function(link) {
-            if (isImageLink(link.href)) {
-              linkImage(link.parentNode, link.href.replace("media.giphy.com", "media1.giphy.com"));
+            let imageLink = getImageLink(link.href);
+            if (imageLink) {
+              linkImage(link.parentNode, imageLink);
               return;
             }
-            giphyID = getGiphyID(link.href)
-            if (giphyID) {
-              linkImage(link.parentNode, "https://media1.giphy.com/media/" + giphyID + "/giphy.gif");
+            let giphyLink = getGiphyLink(link.href);
+            if (giphyLink) {
+              linkImage(link.parentNode, giphyLink);
               return;
             }
-            videoID = getYouTubeVideoID(link.href)
-            if (videoID) {
-              linkImage(link.parentNode, "https://img.youtube.com/vi/" + videoID + "/mqdefault.jpg");
+            let thumbnailLink = getYouTubeLink(link.href);
+            if (thumbnailLink) {
+              linkImage(link.parentNode, thumbnailLink);
               return;
             }
-            twitterID = getTweetID(link.href)
+            let twitterID = getTweetID(link.href);
             if (twitterID) {
               linkTwitter(link, twitterID);
               return;
@@ -74,23 +75,24 @@ function onChatLoad() {
   observer.observe(target, {childList: true});
 }
 
-function isImageLink(url) {
-  return /(.*(?:jpg|png|gif|jpeg))$/gm.test(url);
+function getImageLink(url) {
+  let match = /.*(?:jpe?g|png|gif)(?:\?.*)?$/gim.exec(url);
+  return ((match) ? match[0] : "").replace("media.giphy.com", "media1.giphy.com");
 }
 
-function getGiphyID(url) {
-  let match = /^https?:\/\/giphy\.com\/gifs\/(.*-)?([a-zA-Z0-9]+)$/gm.exec(url);
-  return ((match) ? match[2] : "")
+function getGiphyLink(url) {
+  let match = /^https?:\/\/giphy\.com\/gifs\/(?:.*-)?([a-zA-Z0-9]+)$/gm.exec(url);
+  return ((match) ? "https://media1.giphy.com/media/" + match[1] + "/giphy.gif" : "");
 }
 
-function getYouTubeVideoID(url) {
-  let match = /^https?:\/\/(www\.)?(youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(url);
-  return ((match) ? match[3] : "");
+function getYouTubeLink(url) {
+  let match = /^https?:\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&?]+).*$/gm.exec(url);
+  return ((match) ? "https://img.youtube.com/vi/" + match[1] + "/mqdefault.jpg" : "");
 }
 
 function getTweetID(url) {
-  let match = /^https?:\/\/(www\.)?twitter\.com.+\/([0-9]+)$/gm.exec(url);
-  return ((match) ? match[2] : "");
+  let match = /^https?:\/\/(?:www\.)?twitter\.com.+\/([0-9]+)(?:\?.*)?$/gm.exec(url);
+  return ((match) ? match[1] : "");
 }
 
 function linkImage(node, imageURL) {
