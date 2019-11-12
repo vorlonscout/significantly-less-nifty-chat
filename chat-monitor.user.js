@@ -75,7 +75,7 @@ function onChatLoad() {
 }
 
 function isImageLink(url) {
-  return /(.*(?:jpg|png|gif|jpeg))$/gm.test(url);
+  return /(.*(?:jpg|png|gif|jpeg))$/gim.test(url);
 }
 
 function getGiphyID(url) {
