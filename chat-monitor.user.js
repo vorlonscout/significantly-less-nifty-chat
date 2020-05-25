@@ -11,7 +11,7 @@
 // @grant          GM_log
 // ==/UserScript==
 
-var MESSAGE_CONTAINER = ".chat-list .tw-full-height";
+var MESSAGE_CONTAINER = ".chat-scrollable-area__message-container";
 waitForKeyElements(MESSAGE_CONTAINER, onChatLoad);
 var twitterScript = document.createElement("script");
 twitterScript.type = "text/javascript";
