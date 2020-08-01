@@ -137,7 +137,7 @@ var scrollDistance = 0,
   scrollReference = +new Date();
 
 initConfig();
-var MESSAGE_CONTAINER = ".chat-list .tw-full-height";
+var MESSAGE_CONTAINER = ".chat-scrollable-area__message-container";
 waitForKeyElements(MESSAGE_CONTAINER, onChatLoad);
 var twitterScript = document.createElement("script");
 twitterScript.type = "text/javascript";
@@ -297,7 +297,7 @@ function actionFunction() {
             newNode.dataset.height = newNode.scrollHeight;
             scrollReference = scrollDistance += newNode.scrollHeight;
 
-            if (!newNode.classList.contains("chat-line__message")) {
+            if (!(newNode.classList.contains("chat-line__message") || newNode.classList.contains("user-notice-line"))) {
               // Only treat chat messages
               return;
             }

@@ -26,7 +26,7 @@ body {
   font-size: 2.4rem !important;
 }
 
-.chat-list .tw-full-height.reverse {
+.chat-scrollable-area__message-container.reverse {
   display: flex !important;
   flex-direction: column-reverse;
   padding-bottom: 100vh !important;
@@ -36,7 +36,7 @@ body {
   top: 0px !important;
   background-color: black !important;
 }
-.chat-list .tw-full-height {
+.chat-scrollable-area__message-container {
   background-color: black !important;
   color: #eee;
   display: flex;
@@ -47,7 +47,7 @@ body {
 .chat-line__message.odd {
   background-color: #111 !important;
 }
-.chat-list .tw-full-height > .chat-line__message,
+.chat-scrollable-area__message-container > .chat-line__message,
 .chat-line__status,
 .user-notice-line {
   padding: 3px 1px 3px 6px !important;
