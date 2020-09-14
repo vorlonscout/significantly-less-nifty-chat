@@ -109,9 +109,7 @@ function linkImage(node, imageURL) {
 function linkTwitter(node, tweetID) {
   var tweet = document.createElement("div")
   node.appendChild(tweet);
-  tweet.style.display = "none";
   twttr.widgets
     .createTweet(tweetID, tweet, {theme: "dark", conversation: "hidden", cards: "hidden"})
-    .then(function(){ tweet.style.display = "block"; })
     .catch(e => console.log(e));
 }
