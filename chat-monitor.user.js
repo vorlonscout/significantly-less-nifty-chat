@@ -106,12 +106,12 @@ function linkImage(node, imageURL) {
   image.addEventListener("load", function(){ image.style.display = "block"; })
 }
 
-function linkTwitter(node, tweetURL) {
+function linkTwitter(node, tweetID) {
   var tweet = document.createElement("div")
   node.appendChild(tweet);
   tweet.style.display = "none";
   twttr.widgets
-    .createTweet(tweetURL, tweet, {theme: "dark", conversation: "hidden", cards: "hidden"})
+    .createTweet(tweetID, tweet, {theme: "dark", conversation: "hidden", cards: "hidden"})
     .then(function(){ tweet.style.display = "block"; })
     .catch(e => console.log(e));
 }
