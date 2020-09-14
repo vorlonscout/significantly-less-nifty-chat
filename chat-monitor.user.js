@@ -44,7 +44,7 @@ function onChatLoad() {
         }
 
         //add inline images
-        newNode.querySelectorAll(".chat-line__message > a")
+        newNode.querySelectorAll(".chat-line__message a.link-fragment")
           .forEach(function(link) {
             let imageLink = getImageLink(link.href);
             if (imageLink) {
