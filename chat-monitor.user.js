@@ -68,7 +68,7 @@ function onChatLoad() {
             }
             let twitterID = getTweetID(link.href);
             if (twitterID) {
-              linkTwitter(link, twitterID);
+              linkTwitter(link.parentNode, twitterID);
               return;
             }
           });
@@ -129,9 +129,7 @@ function linkVideo(node, videoURL) {
 }
 
 function linkTwitter(node, tweetID) {
-  var tweet = document.createElement("div")
-  node.appendChild(tweet);
   twttr.widgets
-    .createTweet(tweetID, tweet, {theme: "dark", conversation: "hidden", cards: "hidden"})
+    .createTweet(tweetID, node, {theme: "dark", conversation: "hidden", cards: "hidden"})
     .catch(e => console.log(e));
 }
