@@ -51,6 +51,11 @@ function onChatLoad() {
               linkImage(link.parentNode, imageLink);
               return;
             }
+            let videoLink = getVideoLink(link.href);
+            if (videoLink) {
+              linkVideo(link.parentNode, videoLink);
+              return;
+            }
             let giphyLink = getGiphyLink(link.href);
             if (giphyLink) {
               linkImage(link.parentNode, giphyLink);
@@ -80,6 +85,11 @@ function getImageLink(url) {
   return ((match) ? match[0] : "").replace("media.giphy.com", "media1.giphy.com");
 }
 
+function getVideoLink(url) {
+  let match = /.*\.(?:mp4)(?:\?.*)?$/gim.exec(url);
+  return ((match) ? match[0] : "");
+}
+
 function getGiphyLink(url) {
   let match = /^https?:\/\/giphy\.com\/gifs\/(?:.*-)?([a-zA-Z0-9]+)$/gm.exec(url);
   return ((match) ? "https://media1.giphy.com/media/" + match[1] + "/giphy.gif" : "");
@@ -104,6 +114,18 @@ function linkImage(node, imageURL) {
   image.style.margin = "0.25em auto 0";
   image.src = imageURL
   image.addEventListener("load", function(){ image.style.display = "block"; })
+}
+
+function linkVideo(node, videoURL) {
+  var video = document.createElement("video");
+  node.appendChild(video);
+  video.style.display = "none";
+  video.style.maxWidth = "100%";
+  video.style.maxHeight = "50vh";
+  video.style.margin = "0.25em auto 0";
+  video.src = videoURL;
+  video.autoplay = video.loop = video.muted = true;
+  video.addEventListener("canplay", function() {video.style.display = "block"});
 }
 
 function linkTwitter(node, tweetID) {
