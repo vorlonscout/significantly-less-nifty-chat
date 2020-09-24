@@ -325,7 +325,7 @@ function actionFunction() {
 
             //add inline images
             if (inlineImages) {
-              newNode.querySelectorAll(".chat-line__message > a").forEach(function(link) {
+              newNode.querySelectorAll(".chat-line__message a.link-fragment").forEach(function(link) {
                 var re = /(.*(?:jpg|png|gif|jpeg))$/gm;
                 if (re.test(link.textContent)) {
                   link.innerHTML =
