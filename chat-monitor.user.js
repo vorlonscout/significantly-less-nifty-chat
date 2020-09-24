@@ -106,14 +106,14 @@ function getTweetID(url) {
 }
 
 function linkImage(node, imageURL) {
-  var image = document.createElement("img")
+  var image = document.createElement("img");
   node.appendChild(image);
   image.style.display = "none";
   image.style.maxWidth = "100%";
   image.style.maxHeight = "50vh";
   image.style.margin = "0.25em auto 0";
-  image.src = imageURL
-  image.addEventListener("load", function(){ image.style.display = "block"; })
+  image.src = imageURL;
+  image.addEventListener("load", function() {image.style.display = "block"})
 }
 
 function linkVideo(node, videoURL) {
