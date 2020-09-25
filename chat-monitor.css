@@ -2,11 +2,16 @@ body {
   background-color: black !important;
 }
 
-#root .chat-room__header,
-.chat-list__more-messages-placeholder,
-.pinned-cheer,
-.chat-room__notifications,
-#root .rooms-header {
+/* the "STREAM CHAT" header above the chat */
+div.stream-chat-header,
+/* everything that's not the chat itself or the chat input */
+/* this includes the bit/gift sub leaderboard, notifications that a user is giving away subs, hype trains, etc. */
+section.chat-room > div.chat-room__content > div:not(.chat-list):not(.chat-input),
+/* the "Chat paused due to scroll." type messages */
+div.chat-paused-footer,
+/* the scrollbars */
+div.scrollable-area div.simplebar-track {
+/* hide these things */
   display: none !important;
 }
 
@@ -149,10 +154,6 @@ div.tw-pd-r-2 {
   padding-right: 0 !important;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 #settings-wheel {
   position: absolute;
   right: 5px;
@@ -182,17 +183,4 @@ div.tw-pd-r-2 {
   text-align: center;
   padding-top: 200px;
   display: none;
-}
-body .room-selector__header {
-  display: none !important;
-}
-body .pinned-cheer-v2 {
-  display: none !important;
-}
-.scrollable-area .simplebar-track {
-  display: none !important;
-}
-
-body .chat-list__list-footer {
-  display: none !important;
 }
