@@ -149,7 +149,10 @@ span.chat-line__message--deleted-notice {
   background-color: inherit;
 }
 
-img.chat-line__message--emote {
+/* twitch really tries to push emotes down and we don't want that */
+div.chat-line__message--emote-button,
+div.chat-image__container,
+img.chat-image.chat-line__message--emote {
   margin: 0;
   vertical-align: baseline;
 }
