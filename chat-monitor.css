@@ -102,13 +102,6 @@ span.mention-fragment.mention-fragment--recipient {
   color: inherit;
 }
 
-.special-message {
-  background-color: inherit !important;
-}
-.system-msg {
-  background-color: inherit !important;
-}
-
 /* badges */
 .chat-badge {
   display: none !important;
@@ -117,10 +110,6 @@ span.mention-fragment.mention-fragment--recipient {
 img {
   max-width: 100%;
   max-height: 50vh;
-}
-/* TODO: no whisper tested yet */
-.chat-messages .whisper-line.whisper-incoming {
-  background-color: #3b010e !important;
 }
 
 /* links */
@@ -143,10 +132,6 @@ img.chat-image {
 /* deleted messages */
 span.chat-line__message--deleted-notice {
   opacity: 0.2;
-}
-.mentioned {
-  color: inherit;
-  background-color: inherit;
 }
 
 /* twitch really tries to push emotes down and we don't want that */
@@ -219,13 +204,6 @@ div.tw-c-background-alt {
 }
 #settings-wheel:hover {
   color: rgba(255, 255, 255, 1);
-}
-
-.sticky-message {
-  display: none !important;
-}
-.chat-messages {
-  top: 0px !important;
 }
 #hide {
   z-index: 99;
