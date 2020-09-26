@@ -199,6 +199,16 @@ div.tw-c-background-alt {
   margin: 0 !important;
 }
 
+/* highlighted messages */
+.chat-line__message-body--highlighted {
+/* remove top and bottom borders as they overlap the text on wrapped messages */
+  border-top: none !important;
+  border-bottom: none !important;
+/* negative margin to account for side border thickness */
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+}
+
 #settings-wheel {
   position: absolute;
   right: 5px;
