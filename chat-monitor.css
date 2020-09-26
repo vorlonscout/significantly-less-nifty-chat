@@ -29,18 +29,19 @@ div.scrollable-area div.simplebar-track {
   font-size: 2.4rem !important;
 }
 
-.chat-scrollable-area__message-container.reverse {
-  display: flex !important;
-  flex-direction: column-reverse;
-  padding-bottom: 100vh !important;
-}
+/* the container of messages */
 .chat-scrollable-area__message-container {
   color: #eee;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 0 !important;
 }
+.chat-scrollable-area__message-container.reverse {
+  flex-direction: column-reverse;
+  padding-bottom: 100vh !important;
+}
+
 .chat-line__message.odd {
   background-color: #111 !important;
 }
