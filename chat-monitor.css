@@ -1,5 +1,7 @@
-body {
-  background-color: black !important;
+/* the chat window */
+.chat-room {
+/* should have a black background */
+  background: black !important;
 }
 
 /* the "STREAM CHAT" header above the chat */
@@ -16,10 +18,6 @@ div.scrollable-area div.simplebar-track {
 }
 
 /* Thanks malc for the fixes to how the chat-interface looks*/
-.chat-input {
-  background: black;
-}
-
 .chat-input select,
 .chat-input textarea,
 .chat-input button,
@@ -36,13 +34,7 @@ div.scrollable-area div.simplebar-track {
   flex-direction: column-reverse;
   padding-bottom: 100vh !important;
 }
-
-.chat-room__container {
-  top: 0px !important;
-  background-color: black !important;
-}
 .chat-scrollable-area__message-container {
-  background-color: black !important;
   color: #eee;
   display: flex;
   flex-direction: column;
