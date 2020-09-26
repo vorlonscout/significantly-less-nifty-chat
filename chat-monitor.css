@@ -128,9 +128,13 @@ a {
   color: inherit !important;
 }
 
-.chat-author__display-name {
+/* usernames (incl. localised) */
+.chat-author__display-name,
+.chat-author__intl-login {
   color: green !important;
+  font-weight: 700;
 }
+
 span[data-a-target="chat-message-text"],
 img.chat-image {
   color: white !important;
