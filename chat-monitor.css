@@ -157,31 +157,46 @@ img.chat-image.chat-line__message--emote {
   vertical-align: baseline;
 }
 
-/* Clean up subscription messages */
-.tw-c-text-alt-2 {
-  display: none;
+/* Clean up notices */
+/* remove star from sub announcements */
+.user-notice-line div.tw-c-text-alt-2 {
+  display: none !important;
 }
-p.tw-c-text-link {
-  display: inline;
-}
-.tw-mg-l-05 .tw-block {
+/* the chatter who subscribed */
+.user-notice-line div.tw-mg-l-05 > p > .tw-block {
+/* their name should be on the same line as their message */
   display: inline !important;
 }
-p.tw-c-text-link,
-p.tw-mg-l-05 {
-  font-size: 32px;
-  line-height: 35px;
+/* the notice text part of the sub notice */
+.user-notice-line div.tw-mg-l-05 {
+/* don't indent the text in */
+  margin-left: 0 !important;
+/* but do space it from the message */
+  margin-bottom: 3px !important;
 }
-div.tw-mg-y-05 {
-  margin-bottom: 0 !important;
+/* sub messages have a class-less paragraph, which forces small text again */
+.user-notice-line div.tw-mg-l-05 > p,
+/* converted subs have yet another p element that breaks it yet again */
+.user-notice-line div.tw-mg-l-05 > p p.tw-c-text-link {
+  font-size: 32px !important;
+  line-height: 35px !important;
+}
+/* the message attached to the sub notice */
+.user-notice-line div.tw-mg-t-05 {
+/* the spacing from the notice is performed in the notice instead */
   margin-top: 0 !important;
 }
-div.tw-pd-y-05 {
-  padding-bottom: 0 !important;
-  padding-top: 0 !important;
+/* Sub and Gift-Sub notices have a grey background that we don't want */
+div.tw-c-background-alt {
+  background-color: unset !important;
 }
-div.tw-pd-r-2 {
-  padding-right: 0 !important;
+/* Sub, Gift-Sub and Channel Point Redeem notices */
+/* very specific to avoid margin being overwritten */
+.tw-mg-y-05.tw-pd-r-2.tw-pd-y-05.user-notice-line {
+/* remove left highlight border */
+  border-left: none;
+/* remove margins - our messages are already nicely spaced */
+  margin: 0 !important;
 }
 
 #settings-wheel {
