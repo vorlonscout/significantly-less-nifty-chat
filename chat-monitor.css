@@ -42,16 +42,32 @@ div.scrollable-area div.simplebar-track {
   padding-bottom: 100vh !important;
 }
 
-.chat-line__message.odd {
+/* do zebra-striping */
+.chat-line__message.odd,
+.user-notice-line.odd {
   background-color: #111 !important;
 }
+/* specifically normal chat messages and not chat messages embedded in notices */
 .chat-scrollable-area__message-container > .chat-line__message,
+/* the "Welcome to the chat room" message */
 .chat-line__status,
+/* Sub, Gift-Sub and Channel Point Redeem notices */
 .user-notice-line {
-  padding: 3px 1px 3px 6px !important;
+/* pad around messages to make them nice and readable */
+/* we target non-embedded messages specifically to avoid double-padding */
+  padding: 3px 6px !important;
+/* border between messages to improve readability */
+  border-bottom: #444 solid 1px !important;
+}
+/* all chat messages, including those embedded in notices */
+.chat-line__message,
+/* the "Welcome to the chat room" message */
+.chat-line__status,
+/* Sub, Gift-Sub and Channel Point Redeem notices */
+.user-notice-line {
+/* larger text size improve readability */
   font-size: 32px !important;
   line-height: 35px !important;
-  border-bottom: #444 solid 1px !important;
 }
 
 .chat-line__message .chat-card__link {
