@@ -345,14 +345,10 @@ function actionFunction() {
                 if (match) {
                   var tweetContainer = document.createElement("div");
                   link.parentNode.appendChild(tweetContainer);
-                  tweetContainer.style.display = "none";
                   twttr.widgets
                     .createTweet(match[2], tweetContainer, {theme: "dark", conversation: "hidden", cards: "hidden"})
-                    .then(el => {
-                      tweetContainer.style.display = "block";
-                      scrollReference = scrollDistance += el.scrollHeight;
-                    })
                     .catch(e => console.log(e));
+                    scrollReference = scrollDistance += tweetContainer.scrollHeight;
                 }
               });
             }
