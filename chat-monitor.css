@@ -42,11 +42,7 @@ div.scrollable-area div.simplebar-track {
   padding-bottom: 100vh !important;
 }
 
-/* do zebra-striping */
-.chat-line__message.odd,
-.user-notice-line.odd {
-  background-color: #111 !important;
-}
+/* message and notice lines */
 /* specifically normal chat messages and not chat messages embedded in notices */
 .chat-scrollable-area__message-container > .chat-line__message,
 /* the "Welcome to the chat room" message */
@@ -69,6 +65,72 @@ div.scrollable-area div.simplebar-track {
   font-size: 32px !important;
   line-height: 35px !important;
 }
+/* do zebra-striping */
+.chat-line__message.odd,
+.user-notice-line.odd {
+  background-color: #111 !important;
+}
+
+/* message authors */
+/* badges */
+.chat-badge {
+  display: none !important;
+}
+/* usernames (incl. localised) */
+.chat-author__display-name,
+.chat-author__intl-login {
+  color: green !important;
+  font-weight: 700;
+}
+
+/* message content */
+span[data-a-target="chat-message-text"],
+img.chat-image {
+  color: white !important;
+  font-weight: 300 !important;
+}
+/* deleted messages */
+span.chat-line__message--deleted-notice {
+  opacity: 0.2;
+}
+/* highlighted messages */
+span.chat-line__message-body--highlighted {
+/* remove top and bottom borders as they overlap the text on wrapped messages */
+  border-top: none !important;
+  border-bottom: none !important;
+/* negative margin to account for side border thickness */
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+}
+
+/* links */
+a {
+  color: inherit !important;
+}
+
+/* mentions in messages */
+span.mention-fragment {
+  background-color: transparent !important;
+  padding: 0;
+}
+/* mentions where we're the recipient */
+span.mention-fragment.mention-fragment--recipient {
+  color: inherit;
+}
+
+/* twitch really tries to push emotes down and we don't want that */
+div.chat-line__message--emote-button,
+div.chat-image__container,
+img.chat-image.chat-line__message--emote {
+  margin: 0;
+  vertical-align: baseline;
+}
+
+/* inlined images */
+img {
+  max-width: 100%;
+  max-height: 50vh;
+}
 
 /* clip embeds */
 .chat-line__message .tw-border-radius-medium.tw-elevation-1 {
@@ -90,56 +152,6 @@ div.scrollable-area div.simplebar-track {
   font-size: 32px !important;
   line-height: 35px !important;
   color: #bbb !important;
-}
-
-/* mentions in messages */
-span.mention-fragment {
-  background-color: transparent !important;
-  padding: 0;
-}
-/* mentions where we're the recipient */
-span.mention-fragment.mention-fragment--recipient {
-  color: inherit;
-}
-
-/* badges */
-.chat-badge {
-  display: none !important;
-}
-
-img {
-  max-width: 100%;
-  max-height: 50vh;
-}
-
-/* links */
-a {
-  color: inherit !important;
-}
-
-/* usernames (incl. localised) */
-.chat-author__display-name,
-.chat-author__intl-login {
-  color: green !important;
-  font-weight: 700;
-}
-
-span[data-a-target="chat-message-text"],
-img.chat-image {
-  color: white !important;
-  font-weight: 300 !important;
-}
-/* deleted messages */
-span.chat-line__message--deleted-notice {
-  opacity: 0.2;
-}
-
-/* twitch really tries to push emotes down and we don't want that */
-div.chat-line__message--emote-button,
-div.chat-image__container,
-img.chat-image.chat-line__message--emote {
-  margin: 0;
-  vertical-align: baseline;
 }
 
 /* Clean up notices */
@@ -182,16 +194,6 @@ div.tw-c-background-alt {
   border-left: none;
 /* remove margins - our messages are already nicely spaced */
   margin: 0 !important;
-}
-
-/* highlighted messages */
-.chat-line__message-body--highlighted {
-/* remove top and bottom borders as they overlap the text on wrapped messages */
-  border-top: none !important;
-  border-bottom: none !important;
-/* negative margin to account for side border thickness */
-  margin-left: -4px !important;
-  margin-right: -4px !important;
 }
 
 #settings-wheel {
