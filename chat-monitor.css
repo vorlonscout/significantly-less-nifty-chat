@@ -70,22 +70,28 @@ div.scrollable-area div.simplebar-track {
   line-height: 35px !important;
 }
 
-.chat-line__message .chat-card__link {
+/* clip embeds */
+.chat-line__message .tw-border-radius-medium.tw-elevation-1 {
   background-color: #333 !important;
 }
-.chat-line__message .chat-card__link div {
-  display: inline;
+/* preview images */
+.chat-line__message .tw-border-radius-medium.tw-elevation-1 div.chat-card__preview-img {
+  width: 112px;
+  height: 63px;
 }
-.chat-line__message .chat-card__link .chat-card__title span {
+/* title */
+.chat-line__message .tw-border-radius-medium.tw-elevation-1 .chat-card__title p {
   font-size: 32px !important;
   line-height: 35px !important;
   color: white;
 }
-.chat-line__message .chat-card__link .chat-card__title + div span {
+/* author */
+.chat-line__message .tw-border-radius-medium.tw-elevation-1 .chat-card__title + div p {
   font-size: 32px !important;
   line-height: 35px !important;
   color: #bbb !important;
 }
+
 div.mention-fragment {
   background-color: transparent !important;
   padding: 0;
