@@ -92,10 +92,16 @@ div.scrollable-area div.simplebar-track {
   color: #bbb !important;
 }
 
-div.mention-fragment {
+/* mentions in messages */
+span.mention-fragment {
   background-color: transparent !important;
   padding: 0;
 }
+/* mentions where we're the recipient */
+span.mention-fragment.mention-fragment--recipient {
+  color: inherit;
+}
+
 .special-message {
   background-color: inherit !important;
 }
