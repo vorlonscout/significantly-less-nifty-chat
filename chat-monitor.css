@@ -126,10 +126,12 @@ img.chat-image.chat-line__message--emote {
   vertical-align: baseline;
 }
 
-/* inlined images */
-img {
+/* inlined images and videos */
+.chat-line__message img,
+.chat-line__message video {
   max-width: 100%;
   max-height: 50vh;
+  margin: 0.25em auto 0;
 }
 
 /* clip embeds */
