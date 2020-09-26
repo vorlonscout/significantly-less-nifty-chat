@@ -122,9 +122,12 @@ img {
 .chat-messages .whisper-line.whisper-incoming {
   background-color: #3b010e !important;
 }
+
+/* links */
 a {
   color: inherit !important;
 }
+
 .chat-author__display-name {
   color: green !important;
 }
