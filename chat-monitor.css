@@ -105,8 +105,8 @@ img.chat-image {
   color: white !important;
   font-weight: 300 !important;
 }
-
-.deleted {
+/* deleted messages */
+span.chat-line__message--deleted-notice {
   opacity: 0.2;
 }
 .mentioned {
