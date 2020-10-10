@@ -77,6 +77,11 @@ div.scrollable-area div.simplebar-track {
   background-color: #111 !important;
 }
 
+/* hide reply button */
+.chat-line__reply-icon {
+  display: none !important;
+}
+
 /* message authors */
 /* remove highlighting on hover */
 .chat-line__username-container:hover {
