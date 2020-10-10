@@ -161,7 +161,7 @@ function initConfig() {
 //Checks all config options and loads them appropriately
 function loadSettings() {
   //Add settings wheel to page
-  $(".chat-list").append('<div id="settings-wheel"> <i class="material-icons">settings</i> </div>');
+  $(".chat-room").append('<div id="settings-wheel"> <i class="material-icons">settings</i> </div>');
   $("#settings-wheel").click(function() {
     GM_config.open();
   });
