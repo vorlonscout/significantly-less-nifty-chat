@@ -8,7 +8,7 @@
 div.stream-chat-header,
 /* everything that's not the chat itself or the chat input */
 /* this includes the bit/gift sub leaderboard, notifications that a user is giving away subs, hype trains, etc. */
-section.chat-room > div.chat-room__content > div:not(.chat-list):not(.chat-input),
+section.chat-room > div.chat-room__content > div:not(.chat-list--default):not(.chat-list--other):not(.chat-input),
 /* the "Chat paused due to scroll." type messages */
 div.chat-paused-footer,
 /* the scrollbars */
