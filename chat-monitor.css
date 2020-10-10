@@ -186,6 +186,11 @@ img.chat-image.chat-line__message--emote {
 .user-notice-line div.tw-c-text-alt-2 {
   display: none !important;
 }
+/* channel point icon */
+.user-notice-line span.tw-c-text-alt-2 > div.tw-align-top.tw-inline-flex {
+/* align middle instead of top */
+  vertical-align: 5% !important;
+}
 /* the chatter who subscribed */
 .user-notice-line div.tw-mg-l-05 > p > .tw-block {
 /* their name should be on the same line as their message */
