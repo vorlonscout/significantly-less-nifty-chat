@@ -65,6 +65,12 @@ div.scrollable-area div.simplebar-track {
   font-size: 32px !important;
   line-height: 35px !important;
 }
+/* remove hover highlighting that's part of threads */
+.chat-line__message:focus-within .chat-line__message-highlight,
+.chat-line__message:focus .chat-line__message-highlight,
+.chat-line__message:hover .chat-line__message-highlight {
+  background: unset !important;
+}
 /* do zebra-striping */
 .chat-line__message.odd,
 .user-notice-line.odd {
@@ -72,6 +78,10 @@ div.scrollable-area div.simplebar-track {
 }
 
 /* message authors */
+/* remove highlighting on hover */
+.chat-line__username-container:hover {
+  background: unset !important;
+}
 /* badges */
 .chat-badge {
   display: none !important;
@@ -107,6 +117,9 @@ span.chat-line__message-body--highlighted {
 a {
   color: inherit !important;
 }
+.link-fragment:hover {
+  background: unset !important;
+}
 
 /* mentions in messages */
 span.mention-fragment {
@@ -124,6 +137,9 @@ div.chat-image__container,
 img.chat-image.chat-line__message--emote {
   margin: 0;
   vertical-align: baseline;
+}
+.chat-line__message--emote-button:hover {
+  background: unset !important;
 }
 
 /* inlined images and videos */
