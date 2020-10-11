@@ -8,7 +8,7 @@
 div.stream-chat-header,
 /* everything that's not the chat itself or the chat input */
 /* this includes the bit/gift sub leaderboard, notifications that a user is giving away subs, hype trains, etc. */
-section.chat-room > div.chat-room__content > div:not([class^="chat-list--"]):not(.chat-input),
+section.chat-room > div.chat-room__content > div:not(.chat-list--default):not(.chat-list--other):not(.chat-input),
 /* the "Chat paused due to scroll." type messages */
 div.chat-paused-footer,
 /* the scrollbars */
@@ -65,13 +65,32 @@ div.scrollable-area div.simplebar-track {
   font-size: 32px !important;
   line-height: 35px !important;
 }
+/* remove hover highlighting that's part of threads */
+.chat-line__message:focus-within .chat-line__message-highlight,
+.chat-line__message:focus .chat-line__message-highlight,
+.chat-line__message:hover .chat-line__message-highlight {
+  background: unset !important;
+}
 /* do zebra-striping */
 .chat-line__message.odd,
 .user-notice-line.odd {
   background-color: #111 !important;
 }
 
+/* hide reply button */
+.chat-line__reply-icon {
+  display: none !important;
+}
+
 /* message authors */
+/* remove highlighting on hover */
+.chat-line__username-container:hover {
+  background: unset !important;
+}
+/* mod icons */
+.chat-line__username-container > div {
+  display: none !important;
+}
 /* badges */
 .chat-badge {
   display: none !important;
@@ -107,6 +126,9 @@ span.chat-line__message-body--highlighted {
 a {
   color: inherit !important;
 }
+.link-fragment:hover {
+  background: unset !important;
+}
 
 /* mentions in messages */
 span.mention-fragment {
@@ -124,6 +146,9 @@ div.chat-image__container,
 img.chat-image.chat-line__message--emote {
   margin: 0;
   vertical-align: baseline;
+}
+.chat-line__message--emote-button:hover {
+  background: unset !important;
 }
 
 /* inlined images and videos */
@@ -160,6 +185,11 @@ img.chat-image.chat-line__message--emote {
 /* remove star from sub announcements */
 .user-notice-line div.tw-c-text-alt-2 {
   display: none !important;
+}
+/* channel point icon */
+.user-notice-line span.tw-c-text-alt-2 > div.tw-align-top.tw-inline-flex {
+/* align middle instead of top */
+  vertical-align: 5% !important;
 }
 /* the chatter who subscribed */
 .user-notice-line div.tw-mg-l-05 > p > .tw-block {
